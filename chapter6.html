@@ -1,0 +1,534 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>第六章 jquery与ajax的应用 · GitBook</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="chapter11.html" />
+    
+    
+    <link rel="prev" href="chapter5.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter2.html">
+            
+                <a href="chapter2.html">
+            
+                    
+                    第二章：jquery选择器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter3.html">
+            
+                <a href="chapter3.html">
+            
+                    
+                    第三章：jquery中的DOM操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chapter4.html">
+            
+                <a href="chapter4.html">
+            
+                    
+                    第四章 jquery中的事件和动画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="chapter5.html">
+            
+                <a href="chapter5.html">
+            
+                    
+                    第五章：jQuery对表单，表格的操作及更多应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="chapter6.html">
+            
+                <a href="chapter6.html">
+            
+                    
+                    第六章 jquery与ajax的应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="chapter11.html">
+            
+                <a href="chapter11.html">
+            
+                    
+                    第十一章 jquery性能优化和技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >第六章 jquery与ajax的应用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x516D;&#x7AE0;-jquery&#x4E0E;ajax&#x7684;&#x5E94;&#x7528;">&#x7B2C;&#x516D;&#x7AE0; jquery&#x4E0E;ajax&#x7684;&#x5E94;&#x7528;</h1><p>Ajax&#x5168;&#x79F0;&#x4E3A;&#x201C;Asynchronous JavaScript and XML&quot;&#xFF08;&#x5F02;&#x6B65;JavaScript&#x548C;XML&#xFF09;&#x3002;</p><h3 id="ajax&#x7684;&#x4F18;&#x52BF;">Ajax&#x7684;&#x4F18;&#x52BF;</h3><ul><li>&#x4E0D;&#x9700;&#x8981;&#x63D2;&#x4EF6;&#x652F;&#x6301;
+</li>
+<li>&#x4F18;&#x79C0;&#x7684;&#x7528;&#x6237;&#x4F53;&#x9A8C;
+</li>
+<li>&#x63D0;&#x9AD8;web&#x7A0B;&#x5E8F;&#x7684;&#x6027;&#x80FD;
+</li>
+<li>&#x51CF;&#x8F7B;&#x670D;&#x52A1;&#x5668;&#x548C;&#x5E26;&#x5BBD;&#x7684;&#x8D1F;&#x62C5;
+</li></ul>
+<h3 id="ajax&#x7684;&#x4E0D;&#x8DB3;">Ajax&#x7684;&#x4E0D;&#x8DB3;</h3><ul><li>&#x6D4F;&#x89C8;&#x5668;&#x5BF9;XMLHttpRequest&#x5BF9;&#x8C61;&#x652F;&#x6301;&#x5EA6;&#x4E0D;&#x8DB3;
+</li>
+<li>&#x7834;&#x574F;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x524D;&#x8FDB;&#xFF0C;&#x540E;&#x9000;&#x6309;&#x94AE;&#x7684;&#x6B63;&#x5E38;&#x529F;&#x80FD;
+</li>
+<li>&#x5BF9;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x7684;&#x652F;&#x6301;&#x7684;&#x4E0D;&#x8DB3;
+</li>
+<li>&#x5F00;&#x53D1;&#x548C;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#x7684;&#x7F3A;&#x4E4F;
+</li></ul>
+<font color="red">**Ajax&#x7684;&#x6838;&#x5FC3;&#x662F;XMLHttpRequest&#x5BF9;&#x8C61;&#xFF0C;&#x53D1;&#x9001;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#xFF0C;&#x63A5;&#x53D7;&#x54CD;&#x5E94;&#x53CA;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x662F;&#x901A;&#x8FC7;&#x5B83;&#x6765;&#x5B8C;&#x6210;&#x7684;**</font>
+
+
+
+<p>&#x7531;&#x4E8E;Ajax&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x4E0E;web&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF0C;&#x53EF;&#x4EE5;&#x4E0B;&#x8F7D;Appserv&#x5DE5;&#x5177;&#x5305;&#x6765;&#x642D;&#x5EFA;&#x672C;&#x5730;&#x7684;&#x670D;&#x52A1;&#x5668;&#x73AF;&#x5883;&#xFF0C;&#x5B8C;&#x6210;&#x7F51;&#x7AD9;&#x67B6;&#x6784;&#x3002;</p><hr><p>&#x7528;&#x4F20;&#x7EDF;&#x7684;JavaScript&#x6765;&#x5B9E;&#x73B0;Ajax</p><h4 id="1&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x51FD;&#x6570;&#x6765;&#x5F02;&#x6B65;&#x83B7;&#x53D6;&#x4FE1;&#x606F;&#xFF1A;">1.&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x51FD;&#x6570;&#x6765;&#x5F02;&#x6B65;&#x83B7;&#x53D6;&#x4FE1;&#x606F;&#xFF1A;</h4><pre><code>function Ajax(){
+}</code></pre>
+<h4 id="2&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x7A7A;&#x5BF9;&#x8C61;&#x7528;&#x6765;&#x88C5;&#x5165;xmlhttprequest&#x5BF9;&#x8C61;">2.&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x7A7A;&#x5BF9;&#x8C61;&#x7528;&#x6765;&#x88C5;&#x5165;XMLHttpRequest&#x5BF9;&#x8C61;</h4><pre><code>var xmlHttpReq =null</code></pre>
+<h4 id="3&#x7ED9;xmlhttprequest&#x5BF9;&#x8C61;&#x8D4B;&#x503C;">3.&#x7ED9;XMLHttpRequest&#x5BF9;&#x8C61;&#x8D4B;&#x503C;</h4><pre><code>//&#x68C0;&#x67E5;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x517C;&#x5BB9;&#x6027;
+if(widow.ActiveXObject){
+xmlHtpReq =new Active XObjet(&quot;Microsoft.XMLHTTP&quot;)
+}
+else if(window.XMLHttpReques){
+xmlHttpReq = new XMLHttpRequest();
+}</code></pre>
+<h4 id="4&#x8D4B;&#x503C;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x4F7F;&#x7528;open&#x65B9;&#x6CD5;&#x521D;&#x59CB;&#x5316;xmlhttprequest&#x5BF9;&#x8C61;&#xFF0C;&#x6307;&#x5B9A;http&#x65B9;&#x6CD5;&#x548C;url">4.&#x8D4B;&#x503C;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x4F7F;&#x7528;open()&#x65B9;&#x6CD5;&#x521D;&#x59CB;&#x5316;XMLHttpRequest&#x5BF9;&#x8C61;&#xFF0C;&#x6307;&#x5B9A;Http&#x65B9;&#x6CD5;&#x548C;URL</h4><pre><code>xmlHttpReq.open(&quot;GET&quot;,&quot;test.php&quot;,true);</code></pre>
+<h4 id="5&#x5F04;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x89E3;&#x6790;&#x6570;&#x636E;&#x54CD;&#x5E94;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;">5.&#x5F04;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x89E3;&#x6790;&#x6570;&#x636E;&#x54CD;&#x5E94;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</h4><pre><code>xmlHttpReq.onreadystatechange = RequestCallBack;</code></pre>
+<h4 id="6&#x4F7F;&#x7528;send&#x65B9;&#x6CD5;&#x53D1;&#x9001;&#x8BE5;&#x8BF7;&#x6C42;">6.&#x4F7F;&#x7528;send&#x65B9;&#x6CD5;&#x53D1;&#x9001;&#x8BE5;&#x8BF7;&#x6C42;</h4><pre><code>xmlHttpReq.send(null);</code></pre>
+<h4 id="7&#x8BF7;&#x6C42;&#x5B8C;&#x6210;&#xFF08;readystate&#x7684;&#x503C;&#x4E3A;4&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x54CD;&#x5E94;&#x6210;&#x529F;&#xFF08;http&#x72B6;&#x6001;&#x503C;&#x4E3A;200&#xFF09;&#xFF0C;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;">7.&#x8BF7;&#x6C42;&#x5B8C;&#x6210;&#xFF08;readyState&#x7684;&#x503C;&#x4E3A;4&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x54CD;&#x5E94;&#x6210;&#x529F;&#xFF08;HTTP&#x72B6;&#x6001;&#x503C;&#x4E3A;200&#xFF09;&#xFF0C;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;</h4><pre><code>function RequestCallBack(){
+    if(xmlHttpReq.readyState == 4){
+        if(xmlHttpReq.status == 200){
+        //&#x6267;&#x884C;&#x7684;&#x4EE3;&#x7801;
+        }
+    }
+    else{
+      alert(&quot;error&quot;);
+    }
+}</code></pre>
+<h3 id="jquery&#x4E2D;&#x7684;ajax">jquery&#x4E2D;&#x7684;Ajax</h3><p>jquery&#x5BF9;Ajax&#x64CD;&#x4F5C;&#x8FDB;&#x884C;&#x4E86;&#x5C01;&#x88C5;&#xFF0C;&#x5728;jquery&#x4E2D; $.ajax()&#x65B9;&#x6CD5;&#x5C5E;&#x4E8E;&#x5E95;&#x5C42;&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;2&#x5C42;&#x662F;load()&#xFF0C;$.get(),$.post()&#x65B9;&#x6CD5;&#xFF0C;&#x7B2C;3&#x5C42;&#x662F;$.getScript()&#x548C;$.getJSON()&#x65B9;&#x6CD5;.</p><h4 id="load&#x65B9;&#x6CD5;">load()&#x65B9;&#x6CD5;</h4><p>1.&#x8F7D;&#x5165;HTML&#x6587;&#x6863;
+load()&#x65B9;&#x6CD5;&#x662F;jquery&#x4E2D;&#x6700;&#x4E3A;&#x7B80;&#x5355;&#x548C;&#x5E38;&#x7528;&#x7684;Ajax&#x65B9;&#x6CD5;&#xFF0C;&#x80FD;&#x8F7D;&#x5165;&#x8FDC;&#x7A0B;HTML&#x4EE3;&#x7801;&#x5E76;&#x63D2;&#x5165;DOM&#x4E2D;</p><pre><code> $(&quot;#className&quot;).load(&quot;test.html&quot;)</code></pre>
+<p>2.&#x7B5B;&#x9009;&#x8F7D;&#x5165;&#x7684;HTML&#x6587;&#x6863;</p><pre><code>$(&quot;#className&quot;).load(&quot;test.html&quot; .para)</code></pre>
+<p>&#x53EA;&#x63D2;&#x5165;test.html&#x6587;&#x6863;&#x91CC;&#x7684; id&#x4E3A;para&#x7684;&#x5143;&#x7D20;</p><p>3.&#x4F20;&#x9012;&#x65B9;&#x5F0F;
+&#x5982;&#x679C;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x4F20;&#x9012;&#xFF0C;&#x600E;&#x7528;GET&#x65B9;&#x6CD5;&#xFF0C;&#x6709;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x5219;&#x7528;POST&#x65B9;&#x6CD5;</p><pre><code>$(&quot;#className&quot;).load(&quot;test.php&quot;,function(){
+})
+$(&quot;#className&quot;).load(&quot;test.php&quot;.{name:&quot;rain&quot;,age&quot;22&quot;},function(){
+})</code></pre>
+<p>4.&#x56DE;&#x8C03;&#x51FD;&#x6570;
+&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;</p><pre><code>$(&quot;#className&quot;).load(&quot;test.html&quot;,function(responseText,testStatus,XMLHttpRequest)){
+//responseText ;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;&#x7684;&#x5185;&#x5BB9;
+// textStatus ;&#x8BF7;&#x6C42;&#x72B6;&#x6001;&#xFF0C; success,error ,notmodified,timeout
+//XMLHttpRequest ;XMLHttpRequest &#x5BF9;&#x8C61;
+}</code></pre>
+<h4 id="get&#x65B9;&#x6CD5;&#x548C;post&#x65B9;&#x6CD5;">$.get()&#x65B9;&#x6CD5;&#x548C;$.post()&#x65B9;&#x6CD5;</h4><p>load()&#x65B9;&#x6CD5;&#x901A;&#x5E38;&#x7528;&#x6765;&#x4ECE;Web&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x83B7;&#x53D6;&#x9759;&#x6001;&#x7684;&#x6570;&#x636E;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x800C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F20;&#x9012;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EE5;&#x4E0A;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;</p><p>1.$.get()&#x65B9;&#x6CD5;
+&#x6709;&#x4E00;&#x6BB5;HTML&#x4EE3;&#x7801;</p><pre><code>    &lt;body&gt;
+&lt;form id=&quot;form1&quot; action=&quot;#&quot;&gt;
+&lt;p&gt;&#x8BC4;&#x8BBA;:&lt;/p&gt;
+ &lt;p&gt;&#x59D3;&#x540D;: &lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot; /&gt;&lt;/p&gt;
+ &lt;p&gt;&#x5185;&#x5BB9;: &lt;textarea name=&quot;content&quot; id=&quot;content&quot;  rows=&quot;2&quot; cols=&quot;20&quot;&gt;&lt;/textarea&gt;&lt;/p&gt;
+ &lt;p&gt;&lt;input type=&quot;button&quot; id=&quot;send&quot; value=&quot;&#x63D0;&#x4EA4;&quot;/&gt;&lt;/p&gt;
+&lt;/form&gt;
+
+
+&lt;div  class=&apos;comment&apos;&gt;&#x5DF2;&#x6709;&#x8BC4;&#x8BBA;&#xFF1A;&lt;/div&gt;
+&lt;div id=&quot;resText&quot; &gt;
+&lt;/div&gt;
+
+&lt;/body&gt;</code></pre>
+<p>&#x7528;get&#xFF08;&#xFF09;&#x65B9;&#x6CD5;&#x6765;&#x4F20;&#x9012;&#x53C2;&#x6570;</p><pre><code>$(function(){
+   $(&quot;#send&quot;).click(function(){
+        $.get(&quot;get1.php&quot;, { 
+                    username :  $(&quot;#username&quot;).val() , 
+                    content :  $(&quot;#content&quot;).val()  
+                }, function (data, textStatus){
+                    $(&quot;#resText&quot;).html(data); // &#x628A;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x5230;&#x9875;&#x9762;&#x4E0A;
+                }
+        );
+   })
+})</code></pre>
+<p>$.get()&#x65B9;&#x6CD5;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;</p><pre><code>function (data, textStatus){
+     //data &#x8FD4;&#x56DE;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F; XML&#x6587;&#x6863;,JSON&#x6587;&#x6863;&#xFF0C;HTML&#x6587;&#x6863;
+     //textStatus &#x8BF7;&#x6C42;&#x72B6;&#x6001;&#xFF1A;success,error,notmodified,timeout
+                }</code></pre>
+<ul><li>HTML&#x7247;&#x6BB5;
+&#x4E0D;&#x9700;&#x8981;&#x7ECF;&#x8FC7;&#x5904;&#x7406;&#x5C31;&#x53EF;&#x4EE5;&#x63D2;&#x5165;
+</li></ul>
+<pre><code> $(function(){
+       $(&quot;#send&quot;).click(function(){
+            $.get(&quot;get1.php&quot;, { 
+                        username :  $(&quot;#username&quot;).val() , 
+                        content :  $(&quot;#content&quot;).val()  
+                    }, function (data, textStatus){
+                        $(&quot;#resText&quot;).html(data); // &#x628A;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x5230;&#x9875;&#x9762;&#x4E0A;
+                    }
+            );
+       })
+    })</code></pre>
+<ul><li>XML&#x6587;&#x6863;
+&#x9700;&#x8981;&#x5BF9;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5904;&#x7406;
+</li></ul>
+<pre><code>  $(function(){
+       $(&quot;#send&quot;).click(function(){
+            $.get(&quot;get2.php&quot;, { 
+                        username :  $(&quot;#username&quot;).val() , 
+                        content :  $(&quot;#content&quot;).val()  
+                    }, function (data, textStatus){
+                        var username = $(data).find(&quot;comment&quot;).attr(&quot;username&quot;);
+                        var content = $(data).find(&quot;comment content&quot;).text();
+                        var txtHtml = &quot;&lt;div class=&apos;comment&apos;&gt;&lt;h6&gt;&quot;+username+&quot;:&lt;/h6&gt;&lt;p class=&apos;para&apos;&gt;&quot;+content+&quot;&lt;/p&gt;&lt;/div&gt;&quot;;
+                        $(&quot;#resText&quot;).html(txtHtml); // &#x628A;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x5230;&#x9875;&#x9762;&#x4E0A;
+                    });
+       })
+    })</code></pre>
+<p>&#x8FD4;&#x56DE;&#x7684;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x6BD4;HTML&#x7A0D;&#x5FAE;&#x590D;&#x6742;&#x4E9B;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#x63D0;&#x4F9B;&#x7684;&#x6570;&#x636E;&#x7684;&#x91CD;&#x7528;&#x6027;&#x5C06;&#x6781;&#x5927;&#x63D0;&#x9AD8;</p><ul><li>JSON&#x6587;&#x6863;
+XML&#x6587;&#x6863;&#x5728;&#x5F88;&#x591A;&#x7A0B;&#x5EA6;&#x4E0A;&#x6587;&#x6863;&#x7684;&#x4F53;&#x79EF;&#x5927;&#xFF0C;&#x548C;&#x96BE;&#x4EE5;&#x89E3;&#x6790;&#xFF0C;JSON&#x80FD;&#x591F;&#x89E3;&#x51B3;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x800C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x5730;&#x88AB;&#x91CD;&#x7528;&#x3002;
+</li></ul>
+<pre><code>  $(function(){
+       $(&quot;#send&quot;).click(function(){
+            $.get(&quot;get3.php&quot;, { 
+                        username :  $(&quot;#username&quot;).val() , 
+                        content :  $(&quot;#content&quot;).val()  
+                    }, function (data, textStatus){
+                        var username = data.username;
+                        var content = data.content;
+                        var txtHtml = &quot;&lt;div class=&apos;comment&apos;&gt;&lt;h6&gt;&quot;+username+&quot;:&lt;/h6&gt;&lt;p class=&apos;para&apos;&gt;&quot;+content+&quot;&lt;/p&gt;&lt;/div&gt;&quot;;
+                        $(&quot;#resText&quot;).html(txtHtml); // &#x628A;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x5230;&#x9875;&#x9762;&#x4E0A;
+                    },&quot;json&quot;);
+       })
+    })</code></pre>
+<p>3&#x4E2D;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x7684;&#x4F18;&#x7F3A;&#x70B9;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF1A;
+&#x5728;&#x4E0D;&#x9700;&#x8981;&#x4E0E;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F7F;&#x7528;HTML&#x7247;&#x6BB5;&#x6765;&#x63D0;&#x4F9B;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6570;&#x636E;&#x9700;&#x8981;&#x91CD;&#x7528;&#xFF0C;&#x90A3;&#x4E48;JSON&#x6587;&#x4EF6;&#x662F;&#x4E2A;&#x4E0D;&#x9519;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x5B83;&#x5728;&#x6027;&#x80FD;&#x548C;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x65B9;&#x9762;&#x5177;&#x6709;&#x4F18;&#x52BF;&#xFF0C;&#x800C;&#x5F53;&#x8FDC;&#x7A0B;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x672A;&#x77E5;&#x65F6;&#xFF0C;XML&#x6587;&#x6863;&#x662F;&#x660E;&#x667A;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x5B83;&#x662F;web&#x670D;&#x52A1;&#x9886;&#x57DF;&#x7684;&#x201C;&#x4E16;&#x754C;&#x8BED;&#x201D;&#x3002;</p><p>2.$.post()&#x65B9;&#x6CD5;
+post&#x65B9;&#x6CD5;&#x4E0E;get&#x65B9;&#x6CD5;&#x7684;&#x7ED3;&#x6784;&#x548C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x76F8;&#x540C;&#xFF0C;&#x4E0D;&#x8FC7;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x4ECD;&#x7136;&#x6709;&#x4EE5;&#x4E0B;&#x533A;&#x522B;</p><ul><li>get&#x8BF7;&#x6C42;&#x4F1A;&#x5C06;&#x53C2;&#x6570;&#x8DDF;&#x5728;URL&#x540E;&#x8FDB;&#x884C;&#x4F20;&#x9012;&#xFF0C;&#x800C;post&#x8BF7;&#x6C42;&#x5219;&#x662F;&#x4F5C;&#x4E3A;HTTP&#x6D88;&#x606F;&#x7684;&#x5B9E;&#x73B0;&#x5185;&#x5BB9;&#x53D1;&#x751F;&#x7ED9;web&#x670D;&#x52A1;&#x5668;&#x3002;
+</li>
+<li>get&#x65B9;&#x5F0F;&#x5BF9;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x6709;&#x5927;&#x5C0F;&#x9650;&#x5236;&#xFF0C;&#x800C;&#x4F7F;&#x7528;post&#x65B9;&#x5F0F;&#x4F20;&#x9012;&#x7684;&#x6570;&#x636E;&#x8981;&#x6BD4;get&#x5927;&#x5F97;&#x591A;
+</li>
+<li>get&#x65B9;&#x5F0F;&#x8BF7;&#x6C42;&#x7684;&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x6D4F;&#x89C8;&#x5668;&#x7F13;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x56E0;&#x6B64;&#x5C31;&#x53EF;&#x4EE5;&#x4ECE;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5386;&#x53F2;&#x4E2D;&#x53D6;&#x5230;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x8D26;&#x53F7;&#x548C;&#x5BC6;&#x7801;&#xFF0C;&#x67D0;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;get&#x65B9;&#x6CD5;&#x4F1A;&#x5E26;&#x6765;&#x4E25;&#x91CD;&#x7684;&#x5B89;&#x5168;&#x6027;&#x95EE;&#x9898;
+</li>
+<li>get&#x548C;post&#x4F20;&#x9012;&#x7684;&#x6570;&#x636E;&#x5728;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x83B7;&#x53D6;&#x4E5F;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x5728;php&#x4E2D;&#xFF0C;get&#x7684;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x7528;$_GET[]&#x83B7;&#x53D6;&#xFF0C;&#x800C;post&#x7528;$_POST[]&#x65B9;&#x6CD5;&#x83B7;&#x53D6;
+</li></ul>
+<h4 id="getscript&#x65B9;&#x6CD5;&#x548C;getjson&#x65B9;&#x6CD5;">$.getScript()&#x65B9;&#x6CD5;&#x548C;$.getJson()&#x65B9;&#x6CD5;</h4><p>1.$.getScript()&#x65B9;&#x6CD5;
+&#x6709;&#x65F6;&#x5019;&#xFF0C;&#x5728;&#x9875;&#x9762;&#x521D;&#x6B21;&#x52A0;&#x8F7D;&#x65F6;&#x5C31;&#x53D6;&#x5F97;&#x6240;&#x9700;&#x7684;&#x5168;&#x90E8;JavaScript&#x6587;&#x4EF6;&#x662F;&#x5B8C;&#x5168;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x9700;&#x8981;&#x54EA;&#x4E2A;JavaScript&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x52A8;&#x6001;&#x5730;&#x521B;&#x5EFA;&lt; script &gt;&#x6807;&#x7B7E;</p><pre><code>$(function(){
+    $(&apos;#send&apos;).click(function() {
+         $.getScript(&apos;test.js&apos;);
+    });})</code></pre>
+<p>&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x56DE;&#x8C03;&#x51FD;&#x6570;</p><pre><code>$(function(){
+         $.getScript(&apos;jquery.color.js&apos;,function(){
+              $(&quot;&lt;p&gt;&#x52A0;&#x8F7D;JavaScript&#x5B8C;&#x6BD5;&lt;/p&gt;&quot;).appendTo(&quot;body&quot;);
+              $(&quot;#go&quot;).click(function(){
+                   $(&quot;.block&quot;).animate( { backgroundColor: &apos;pink&apos; }, 1000)
+                              .animate( { backgroundColor: &apos;blue&apos; }, 1000);
+              });
+         });})</code></pre>
+<p>2.$.getJson()&#x65B9;&#x6CD5;</p><p>&#x8DDF;getscript&#x7684;&#x539F;&#x56E0;&#x5DEE;&#x4E0D;&#x591A;</p><pre><code>$(function(){
+    $(&apos;#send&apos;).click(function() {
+         $.getJSON(&apos;test.json&apos;, function(data) {
+             $(&apos;#resText&apos;).empty();
+              var html = &apos;&apos;;
+              $.each( data  , function(commentIndex, comment) {
+                  html += &apos;&lt;div class=&quot;comment&quot;&gt;&lt;h6&gt;&apos; + comment[&apos;username&apos;] + &apos;:&lt;/h6&gt;&lt;p class=&quot;para&quot;&gt;&apos; + comment[&apos;content&apos;] + &apos;&lt;/p&gt;&lt;/div&gt;&apos;;
+              })
+             $(&apos;#resText&apos;).html(html);
+        })
+   })})</code></pre>
+<p>&#x4F7F;&#x7528;JSONP&#x5F62;&#x5F0F;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x6765;&#x52A0;&#x8F7D;&#x5176;&#x4ED6;&#x7F51;&#x7AD9;JSON&#x6570;&#x636E;</p><pre><code>$(function(){
+    $(&apos;#send&apos;).click(function() {
+        $.getJSON(&quot;http://api.flickr.com/services/feeds/photos_public.gne?tags=car&amp;tagmode=any&amp;format=json&amp;jsoncallback=?&quot;,
+                  function(data){
+                      $.each(data.items, function( i,item ){
+                            $(&quot;&lt;img class=&apos;para&apos;/&gt; &quot;).attr(&quot;src&quot;, item.media.m ).appendTo(&quot;#resText&quot;);
+                            if ( i == 3 ) { 
+                                return false;
+                            }
+                      });
+                 }
+        ); 
+   })})</code></pre>
+<p>JSON&#x53EF;&#x4EE5;&#x5B9E;&#x884C;&#x8DE8;&#x57DF;&#x8BBF;&#x95EE;&#xFF0C;&#x6253;&#x7834;&#x4E86;&#x7531;&#x4E8E;&#x540C;&#x6E90;&#x7B56;&#x7565;&#x7684;&#x539F;&#x56E0;&#xFF0C;XMLHttpRequest&#x5BF9;&#x8C61;&#x53EA;&#x80FD;&#x5B9E;&#x73B0;&#x540C;&#x57DF;&#x8BBF;&#x95EE;&#x7684;&#x9650;&#x5236;&#x3002;</p><h4 id="ajax&#x65B9;&#x6CD5;">$.ajax()&#x65B9;&#x6CD5;</h4><p>$.ajax()&#x65B9;&#x6CD5;&#x662F;jquery&#x6700;&#x5E95;&#x5C42;&#x7684;Ajax&#x5B9E;&#x884C;</p><p>&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4F46;&#x5728;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x91CC;&#x5305;&#x542B;&#x4E86;$.ajax()&#x65B9;&#x6CD5;&#x6240;&#x9700;&#x8981;&#x7684;&#x8BF7;&#x6C42;&#x8BBE;&#x7F6E;&#x4EE5;&#x53CA;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x53C2;&#x6570;&#x4EE5;key/value&#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x5728;&#xFF0C;&#x6240;&#x6709;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x53EF;&#x9009;&#x7684;</p><pre><code>$(function(){
+    $(&apos;#send&apos;).click(function() {
+        $.ajax({
+          type: &quot;GET&quot;,
+          url: &quot;test.json&quot;,
+          dataType: &quot;json&quot;,
+          success : function(data){
+                 $(&apos;#resText&apos;).empty();
+                  var html = &apos;&apos;;
+                  $.each( data  , function(commentIndex, comment) {
+                      html += &apos;&lt;div class=&quot;comment&quot;&gt;&lt;h6&gt;&apos; + comment[&apos;username&apos;] + &apos;:&lt;/h6&gt;&lt;p class=&quot;para&quot;&gt;&apos; + comment[&apos;content&apos;] + &apos;&lt;/p&gt;&lt;/div&gt;&apos;;
+                  })
+                 $(&apos;#resText&apos;).html(html);
+          }
+        }); 
+    })&#xFF1B;})</code></pre>
+<h3 id="&#x5E8F;&#x5217;&#x5316;&#x5143;&#x7D20;">&#x5E8F;&#x5217;&#x5316;&#x5143;&#x7D20;</h3><h4 id="1serialize&#x65B9;&#x6CD5;">1.serialize()&#x65B9;&#x6CD5;</h4><p>&#x53EF;&#x4EE5;&#x5C06;&#x8868;&#x5355;&#x7684;&#x6570;&#x636E;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;DOM&#x5143;&#x7D20;&#x5185;&#x5BB9;&#x8F6C;&#x5316;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x51CF;&#x5C11;&#x4E86;&#x7F16;&#x5199;&#x6570;&#x636E;&#x7684;&#x8FC7;&#x7A0B;&#x548C;&#x5BF9;&#x5B57;&#x7B26;&#x7F16;&#x7801;&#x7684;&#x95EE;&#x9898;&#x3002;</p><pre><code>$(function(){
+   $(&quot;#send&quot;).click(function(){
+        $.get(&quot;get1.php&quot;, $(&quot;#form1&quot;).serialize() , function (data, textStatus){
+                    $(&quot;#resText&quot;).html(data); // &#x628A;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x6DFB;&#x52A0;&#x5230;&#x9875;&#x9762;&#x4E0A;
+                }
+        );
+   })
+})</code></pre>
+<p>&#x7528;&#x5B57;&#x7B26;&#x65B9;&#x5F0F;&#x65F6;&#xFF0C;&#x6CE8;&#x610F;&#x5B57;&#x7B26;&#x7F16;&#x7801;&#xFF08;&#x4E2D;&#x6587;&#x95EE;&#x9898;&#xFF09;</p><pre><code>$.get(&quot;get1.php&quot;, &quot;username=&quot;+encodeURIComponent($(&apos;#username&apos;).val())+&quot;&amp;content=&quot;+encodeURIComponent($(&apos;#content&apos;).val()), </code></pre>
+<h4 id="serializearray&#x65B9;&#x6CD5;">serializeArray()&#x65B9;&#x6CD5;</h4><p>&#x662F;&#x5C06;DOM&#x5143;&#x7D20;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x8FD4;&#x56DE;JSON&#x683C;&#x5F0F;</p><pre><code>$(function(){
+         var fields = $(&quot;:checkbox,:radio&quot;).serializeArray();
+         console.log(fields);// Firebug&#x8F93;&#x51FA;
+         $.each( fields, function(i, field){
+            $(&quot;#results&quot;).append(field.value + &quot; , &quot;);
+        }); 
+   })</code></pre>
+<h4 id="3param&#x65B9;&#x6CD5;">3.$.param()&#x65B9;&#x6CD5;</h4><p>&#x7528;&#x6765;&#x5BF9;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x6216;&#x5BF9;&#x8C61;&#x6309;&#x7167;key/value&#x7684;&#x65B9;&#x5F0F;&#x5E8F;&#x5217;&#x5316;</p><pre><code>(function(){
+    var obj={a:1,b:2,c:3};
+    var  k  = $.param(obj);
+    alert(k)        // &#x8F93;&#x51FA;  a=1&amp;b=2&amp;c=3
+})</code></pre>
+<h3 id="jquery&#x4E2D;&#x7684;ajax&#x5168;&#x5C40;&#x4E8B;&#x4EF6;">jquery&#x4E2D;&#x7684;ajax&#x5168;&#x5C40;&#x4E8B;&#x4EF6;</h3><p>jquery&#x5728;&#x8C03;&#x7528;ajax()&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x4E9B;&#x5168;&#x5C40;&#x51FD;&#x6570;&#xFF0C;&#x5373;&#x4E0D;&#x8BBA;ajax()&#x5728;&#x4F55;&#x65F6;&#x4F55;&#x5904;&#xFF0C;&#x53EA;&#x8981;&#x89E6;&#x53D1;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;
+ajaxStart() :&#x5728;ajax&#x8BF7;&#x6C42;&#x5F00;&#x59CB;&#x524D;&#x89E6;&#x53D1;
+ajaxStop(): &#x5728;ajax&#x8BF7;&#x6C42;&#x7ED3;&#x675F;&#x540E;&#x89E6;&#x53D1;</p><p>&#x6B64;&#x5916;&#x8FD8;&#x6709;
+ajaxComplete()  Ajax&#x8BF7;&#x6C42;&#x5B8C;&#x6210;&#x65F6;&#x89E6;&#x53D1;
+ajaxError()     Ajax&#x8BF7;&#x6C42;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x65F6;&#x89E6;&#x53D1;
+ajaxSend()  Ajax&#x8BF7;&#x6C42;&#x53D1;&#x751F;&#x524D;&#x89E6;&#x53D1;
+ajaxSuccess()   Ajax&#x8BF7;&#x6C42;&#x6210;&#x529F;&#x65F6;&#x89E6;&#x53D1;</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="chapter5.html" class="navigation navigation-prev " aria-label="Previous page: 第五章：jQuery对表单，表格的操作及更多应用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="chapter11.html" class="navigation navigation-next " aria-label="Next page: 第十一章 jquery性能优化和技巧">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第六章 jquery与ajax的应用","level":"1.6","depth":1,"next":{"title":"第十一章 jquery性能优化和技巧","level":"1.7","depth":1,"path":"chapter11.md","ref":"chapter11.md","articles":[]},"previous":{"title":"第五章：jQuery对表单，表格的操作及更多应用","level":"1.5","depth":1,"path":"chapter5.md","ref":"chapter5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter6.md","mtime":"2016-08-31T03:08:33.388Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2016-08-31T03:09:10.207Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
